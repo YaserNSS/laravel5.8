@@ -1,0 +1,12 @@
+git commands
+Initial
+git init
+git add *
+git commit -m "Initial Project"
+git remote add origin git@github.com:YaserNSS/codertape8.git
+git push -u origin master
+the repeat below
+
+git add *
+git commit -m "Initial Project"
+git push -u origin master
