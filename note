@@ -10,3 +10,50 @@ the repeat below
 git add *
 git commit -m "Initial Project"
 git push -u origin master
+
+
+
+Lec 02 : Routes
+---------------------------------------------------
+Working in Roures
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('contact', function () {
+    return 'Contact Us';
+});
+
+
+Route::get('about', function () {
+    return 'About Us';
+});
+
+Lec 03 : Views
+---------------------------------------------------
+create about and contact view
+change the Route
+Route::view('contact', 'contact');
+Route::view('about', 'about');
+Lec 04 : Passing Data to Views
+---------------------------------------------------
+create customers view then
+Route::get('customers', function () {
+
+    $customers = [
+        'Jane Doe',
+        'Jone Dao',
+        'Yasir Mustafa'
+    ];
+    return view('internals.customers',[
+        'customers' => $customers,
+    ]);
+});
+
+then
+<ul>
+    @foreach ($customers as $customer)
+    <li>{{$customer}}</li>
+    @endforeach
+</ul>
+
