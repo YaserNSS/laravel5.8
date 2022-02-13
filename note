@@ -35,6 +35,7 @@ create about and contact view
 change the Route
 Route::view('contact', 'contact');
 Route::view('about', 'about');
+
 Lec 04 : Passing Data to Views
 ---------------------------------------------------
 create customers view then
@@ -57,3 +58,19 @@ then
     @endforeach
 </ul>
 
+
+Lec 05 : Controller
+---------------------------------------------------
+php artisan make:controller CustomersController
+Route::get('customers', 'CustomersController@list');
+    public function list()
+    {
+        $customers = [
+            'Jane Doe',
+            'Jone Dao',
+            'Yasir Mustafa'
+        ];
+        return view('internals.customers',[
+            'customers' => $customers,
+        ]);
+    }
