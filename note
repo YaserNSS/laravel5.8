@@ -74,3 +74,65 @@ Route::get('customers', 'CustomersController@list');
             'customers' => $customers,
         ]);
     }
+Lec 06 : balde template
+---------------------------------------------------
+ul>li*4>a
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="contact">Contact Us</a></li>
+    <li><a href="about">About Us</a></li>
+    <li><a href="customers">Customers</a></li>
+</ul>
+
+create layout files shared by pages
+
+then make yeild for content
+@extends('layout')
+
+@section('content')
+
+        <h1>Customers</h1>
+
+
+        <ul>
+            @foreach ($customers as $customer)
+            <li>{{$customer}}</li>
+            @endforeach
+        </ul>
+
+@endsection
+
+Lec 07 : SQLite DB
+---------------------------------------------------
+open env file
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+change it
+DB_CONNECTION=sqlite
+create empty file in database folder
+touch database/database.sqlite
+then
+php artisan migrate
+create model with mgration// represent single row in DB reponsible for CRUD in table
+php artisan make:mode Customer -m
+goto migration
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->timestamps();
+php artisan migrate
+php artisan tinker
+>>> \App\Customer::all()
+>>> $customer = new  \App\Customer
+=> App\Customer {#2977}
+>>> $customer->name='Jone Doe';
+=> "Jone Doe"
+>>> $customer->save();
+=> true
+goto controller
+$customers = Customer::all();
+goto view
+            <li>{{$customer->name}}</li>
