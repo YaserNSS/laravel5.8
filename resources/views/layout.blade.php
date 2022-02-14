@@ -1,8 +1,4 @@
 
-
-
-
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -13,26 +9,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>My First Project</title>
-  </head>
-  <body>
-
-    <ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link active" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="about">About Us</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="contact">Contact Us</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="customers">Customer List</a>
-        </li>
-    </ul>
+    <title>@yield('title','Learn Laravel 5.8')</title>
+    </head>
+    <body>
 
     <div class="container">
+        @include('nav')
         @yield('content')
     </div>
 
