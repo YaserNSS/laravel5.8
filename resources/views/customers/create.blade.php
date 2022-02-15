@@ -1,18 +1,18 @@
 @extends('layout')
 
-@section('title','Customers')
+@section('title','Add New Customer')
 
 @section('content')
 
     <div class="row">
         <div class="col-12">
-                <h1>Customers</h1>
+                <h1>Add New Customer</h1>
             </div>
         </div>
 
     <div class="row">
         <div class="col-12">
-                <form action="customers" method="POST" class="pb-5">
+                <form action="/customers" method="POST" class="pb-5">
 
                     <div class="form-group">
                         <label for="name">Name</label>
@@ -35,6 +35,15 @@
                             </select>
                         </div>
 
+                    <div class="form-group">
+                            <label for="company_id">Company</label>
+                            <select name="company_id" class="form-control">
+                                @foreach ($companies as $company)
+                                    <option value="{{$company->id}}">{{$company->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                     <button type="submit" class="btn btn-primary">Add Customer</button>
                     @csrf
                 </form>
@@ -43,27 +52,6 @@
 
 
 
-<hr>
-
-
-<div class="row">
-    <div class="col-6">
-            <h3>Active Customers</h3>
-            <ul>
-                @foreach ($ActiveCustomers as $ActiveCustomer)
-                <li>{{$ActiveCustomer->name}} (<span class="text-muted">{{$ActiveCustomer->email}}</span>)</li>
-                @endforeach
-            </ul>
-        </div>
-    <div class="col-6">
-            <h3>Inactive Customers</h3>
-        <ul>
-            @foreach ($InactiveCustomers as $InactiveCustomer)
-            <li>{{$InactiveCustomer->name}} (<span class="text-muted">{{$InactiveCustomer->email}}</span>)</li>
-            @endforeach
-        </ul>
-    </div>
-</div>
 
 @endsection
 
