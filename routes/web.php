@@ -20,16 +20,5 @@ Route::view('about', 'about');
 Route::get('customers', 'CustomersController@index');
 Route::get('customers/create', 'CustomersController@create');
 Route::post('customers', 'CustomersController@store');
+Route::get('customers/{customer}', 'CustomersController@show');
 
-
-// Route::get('customers', function () {
-
-//     $customers = [
-//         'Jane Doe',
-//         'Jone Dao',
-//         'Yasir Mustafa'
-//     ];
-//     return view('internals.customers',[
-//         'customers' => $customers,
-//     ]);
-// });
