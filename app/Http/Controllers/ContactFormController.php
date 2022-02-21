@@ -23,7 +23,7 @@ class ContactFormController extends Controller
         //send email
         Mail::to('test@test.com')->send(new ContactFormMail($data));
 
-        // return redirect('contact')->with('message','Thanks for your Message. We\'ll be in touch.');
+        return redirect('contact')->with('message','Thanks for your Message. We\'ll be in touch.');
 
     }
 
