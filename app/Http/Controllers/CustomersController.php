@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\Company;
 use Illuminate\Http\Request;
+use App\Events\NewCustomerHasRegisteredEvent;
+use App\Mail\WelcomeNewUserMail;
+use Illuminate\Support\Facades\Mail;
 
 class CustomersController extends Controller
 {
@@ -32,7 +35,11 @@ class CustomersController extends Controller
 
     public function store()
     {
-        Customer::create($this->validateRequest());
+        $customer = Customer::create($this->validateRequest());
+        event(new NewCustomerHasRegisteredEvent($customer));
+
+
+        // Mail::to($customer->email)->send(new WelcomeNewUserMail());
 
         return redirect('customers');
     }
