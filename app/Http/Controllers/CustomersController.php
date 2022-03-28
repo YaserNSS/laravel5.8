@@ -36,6 +36,8 @@ class CustomersController extends Controller
 
     public function store()
     {
+
+        $this->authorize('create',Customer::class);
         $customer = Customer::create($this->validateRequest());
         event(new NewCustomerHasRegisteredEvent($customer));
 

@@ -7,7 +7,9 @@
     <div class="row">
         <div class="col-12">
                 <h1>Customers List</h1>
-                <p><a href="customers/create">Add Customer</a></p>
+                @can('create', App\Customer::class)
+                    <p><a href="{{route('customers.create')}}">Add Customer</a></p>
+                @endcan
             </div>
         </div>
 
